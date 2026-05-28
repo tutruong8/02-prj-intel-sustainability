@@ -44,7 +44,8 @@ header p {
   padding: 2rem 1rem;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  width: 900px;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -60,24 +61,84 @@ header p {
 .card {
   background: white;
   border-radius: 16px;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-    flex: 0 0 calc((100% - 2rem) / 3);
-    max-width: calc((100% - 2rem) / 3);
+  box-shadow: 0 12px 12px rgba(0, 0, 0, 0.08);
+  flex: 0 0 320px;
+  max-width: 320px;
+  scroll-snap-align: start;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
 }
 
 .card h2 {
-  margin: 0 0 0.4rem;
+  margin: 0;
   color: #0c4f8a;
   font-size: 1.3rem;
 }
 
 .card h3 {
-  margin: 0 0 1rem;
+  margin: 0;
   font-size: 1rem;
 }
 
 .card p {
   margin: 0;
+  text-align: left;
+}
+
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 20px 32px rgba(0, 0, 0, 0.16);
+}
+
+
+
+.card-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.card-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.8rem;
+  padding: 1.3rem;
+  background: transparent;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.28s ease, transform 0.28s ease;
+  pointer-events: none;
+}
+
+/* Make card text readable over images when revealed */
+.card-content h3,
+.card-content p {
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.6);
+}
+
+.card:hover .card-content {
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Year shown above the image */
+.card-year {
+  padding: 0.9rem 1.3rem 0;
+  color: #0c4f8a;
+  font-weight: 700;
+  font-size: 1.15rem;
+  text-align: center;
 }
 
 p {
