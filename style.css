@@ -80,6 +80,11 @@ header p {
   margin: 0;
 }
 
+p {
+  text-align: center;
+  margin: 1rem 0;
+}
+
 @media (max-width: 720px) {
   header {
     padding: 1.5rem 0.9rem;
